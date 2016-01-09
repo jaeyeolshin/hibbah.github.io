@@ -17,20 +17,20 @@ baseurl: ""
 title: Jaeyeol Shin
 
 # Short description of your site
-description: A virtual proof that name is awesome!
+description: Jaeyeol Shin's blog.
 
 # --- Navigation bar options --- #
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/img/avatar-icon.png"
+avatar: "/img/taipei-with-danbing.jpeg"
 
 # List of links in the navigation bar
 navbar-links:
   Home: ""
   About Me: "aboutme"
-  Author's home: "http://deanattali.com"
-  
+#  Author's home: "http://deanattali.com"
+
 # --- Footer options --- #
 
 # Change all these values or delete the ones you don't want.
@@ -43,7 +43,7 @@ author:
   twitter: jaeyeolshin   # eg. daattali
 #  linkedin: yourlink  # eg. "pub/dean-attali/8/946/143"
 #  stackoverflow: yourlink  # eg. "3943160/daattali"
- 
+
 # Select which links to show in the footer
 footer-links-active:
   rss: false
@@ -62,9 +62,11 @@ footer-links-active:
 
 # Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
 #disqus: ""
+disqus: jaeyeolshin
 
 # Fill in your Google Analytics ID to track your website using GA
 #google_analytics: ""
+google_analytics: UA-72209766-1
 
 # --- Don't need to touch anything below here (but you can if you want) --- #
 
@@ -72,7 +74,7 @@ footer-links-active:
 timezone: "Asia/Seoul"
 markdown: kramdown
 highlighter: pygments
-permalink: /:year-:month-:day-:title
+permalink: /:year-:month-:day/:title
 paginate: 5
 
 # Default YAML values (more information on Jekyll's site)
@@ -142,6 +144,6 @@ prose:
           element: "checkbox"
           label: "Publish"
           help: "Check to publish post, uncheck to hide."
-  
+
 # Beautiful Jekyll / Dean Attali
 # 2fc73a3a967e97599c9763d05e564189
