@@ -3,15 +3,19 @@ layout: post
 title: Java - Interning Pool
 comments: true
 ---
-----
+
+----------
 ## 요약
-----
+
+----------
 C++문법에 익숙한 사람이 Java의 세계에 입문하면서 부딪히게 되는 몇 가지 오류들에 대해 다룬다.
 
 이 포스트에서는 Java의 String객체를 다루는데 있어서 평소 C++에서 사용했던 비교연산(**==**)을 그대로 사용함으로써 마주하게 되는 혼란과, 더 나아가 **Interning Pool**, **Immutable Object**에 대해 중점적으로 이야기한다.
-----
+
+----------
 ## 고통의 시작
-----
+
+----------
 {% highlight cpp %}
 // C++
 string str1 = "abc";
@@ -49,8 +53,10 @@ if(str1 == str2) // false
 스트링 데이터를 다룬다.
 으억.. 비교연산이 의도한대로 동작하지 않는다. Java가 밉다.
 Equals()함수를 이용해야한다.
-----
+
+--------
 ## Interning Pool
+
 ----
 ![testimg2]({{ site.url }}/img/spongebob.png)
 
