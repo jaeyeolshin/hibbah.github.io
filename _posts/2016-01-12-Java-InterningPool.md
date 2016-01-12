@@ -111,7 +111,7 @@ if(str1 == str2) // false
 {% endhighlight %}
 비록 같은 값("abc")을 가지긴 했지만 new 연산자를 통해 String객체를 각각 별도로 생성했으므로 str1과 str2는 서로 다른 참조값을 가지게 되므로, 참조변수를 비교하는 코드 **str1 == str2**는 false를 반환하게 된다. 위의 코드를 메모리 구조 관점에서 간단하게 살펴본 그림은 아래와 같다.
 
-![memory]({{ site.url }}/img/java_String1.jpg)
+![memory1]({{ site.url }}/img/java_String1.jpg)
 
 String(string)타입에 대한 ==연산자를 C++에서는 **operator ==**로 해석하는 반면, Java에서는 참조변수가 가진 참조값 자체에 대한 비교로 해석한다는 것을 알아두자.
 
@@ -149,7 +149,7 @@ X개의 String객체를 생성하는데 모두 동일한 값("abc")를 갖도록
 
 먼저, 첫 라인의 **String str1 = "abc"**에서 Interning Pool을 참조하여 "abc"라는 값을 가진 객체가 존재하지 않음을 확인하고 힙메모리에 "abc"값을 갖는 String객체를 생성한다. 이후의 모든 라인은 Interning Pool을 참조하여 "abc"라는 값의 String객체가 이미 메모리 영역에 존재함을 알고, 해당 객체의 참조값을 반환하게된다. 즉, str1... strX까지 X개의 참조변수는 모두 동일한 하나의 객체를 참조하게 된다.
 
-![memory]({{ site.url }}/img/java_String2.jpg)
+![memory2]({{ site.url }}/img/java_String2.jpg)
 
 new연산자를 이용한 방식은 앞에서도 언급했듯이 new연산자를 통해 각각 별도의 객체를 생성함을 **명시적**으로 나타낸 것이므로 Interning Pool을 참조하지 않고 모두 별개의 객체로 생성한다.
 
