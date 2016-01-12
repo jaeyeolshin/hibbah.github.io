@@ -13,7 +13,9 @@ Interning Pool, immutable
 Equals()함수를 이용해야한다.
 
 ## Interning Pool
+
 ![testimg1](https://github.com/hibbah/hibbah.github.io/blob/master/img/spongebob.png)
-![testimg2]({{ site.url }}/img/spngebob.png)
+
+![testimg2]({{ site.url }}/img/spongebob.png)
 
 
