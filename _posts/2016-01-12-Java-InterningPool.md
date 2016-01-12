@@ -20,7 +20,6 @@ string str2 = "abc";
 if(str1 == str2) // true
   cout<<"Same"<<endl; // print "Same"
 {% endhighlight %}
-
 위의 C++코드는 의도한대로 "Same"을 출력한다.
 
 {% highlight java %}
@@ -34,7 +33,6 @@ if(str1 == str2) // true
 Java또한 마찬가지로 **의도**한대로 "Same"을 출력한다.
 (사실 "Same"이 출력되는 이유가 **의도**와는 전혀 다른 이유지만, 결과적으로 "Same"이 출력되어 버리기 때문에 아래 코드의 결과에서 혼란을 마주하게 된다.)
 
-
 '아! Java에서는 객체 생성을 new연산자를 통해 할당하지!'라는 생각으로 객체 생성법만 달리할 뿐, 위와 동일한 코드를 작성한다.
 
 {% highlight java %}
@@ -45,7 +43,6 @@ String str2 = new String("abc");
 if(str1 == str2) // false
   System.out.println("Same"); // skip
 {% endhighlight %}
-
 분명 "Same"이 출력될것을 기대하였으나, 아무런 메시지를 출력하지 않는 콘솔창을 보고 몇 번이나 재실행 해보지만 콘솔은 묵묵하게 정적을 유지한다.
 
 
