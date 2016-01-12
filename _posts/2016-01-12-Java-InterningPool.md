@@ -137,17 +137,16 @@ String객체는 독특하게 할당연산자를 통해서도 생성이 가능한
 
 {% highlight java %}
 // Java
-String str1 = "abc";
-String str2 = "abc";
-String str3 = "abc";
-        ...
-String strX = "abc";
+String[] str = new String[X];
+
+for(int i=0; i<X; ++i)
+  str[i] = "abc";
 {% endhighlight %}
 X개의 String객체를 생성하는데 모두 동일한 값("abc")를 갖도록 한다. 여기서 만약 X가 굉장히 크다면 동일한 값을 가지는 객체 X개를 모두 별도로 생성하게 되므로 메모리 낭비가 커진다.
 
 위와 같은 메모리 낭비를 줄이고자 등장한 기법(?)이 Interning이며, 리터럴값의 할당을 통해 객체를 생성할때는 무작정 객체를 생성하는 것이 아니라 **Interning Pool**이라는 메모리 영역을 참조하여 동일한 값의 객체가 이미 메모리에 존재하는지 확인하는 과정을 거친다.
 
-먼저, 첫 라인의 **String str1 = "abc"**에서 Interning Pool을 참조하여 "abc"라는 값을 가진 객체가 존재하지 않음을 확인하고 힙메모리에 "abc"값을 갖는 String객체를 생성한다. 이후의 모든 라인은 Interning Pool을 참조하여 "abc"라는 값의 String객체가 이미 메모리 영역에 존재함을 알고, 해당 객체의 참조값을 반환하게된다. 즉, str1... strX까지 X개의 참조변수는 모두 동일한 하나의 객체를 참조하게 된다.
+먼저, 첫 번째 객체를 생성하는 **String str[0] = "abc"**에서 Interning Pool을 참조하여 "abc"라는 값을 가진 객체가 존재하지 않음을 확인하고 힙메모리에 "abc"값을 갖는 String객체를 생성한다. 이후의 모든 라인은 Interning Pool을 참조하여 "abc"라는 값의 String객체가 이미 메모리 영역에 존재함을 알고, 해당 객체의 참조값을 반환하게된다. 즉, str[0]... str[X-1]까지 X개의 참조변수는 모두 동일한 하나의 객체를 참조하게 된다.
 
 ![memory2]({{ site.url }}/img/java_String2.JPG)
 
@@ -159,7 +158,7 @@ new연산자를 이용한 방식은 앞에서도 언급했듯이 new연산자를
 
 ----
 
-## Immutable Object
+## Immutable Object (작성중)
 
 {% highlight java %}
 String str1 = "abc";
@@ -172,8 +171,8 @@ if(str1 == str2) // false
 {% endhighlight %}
 
 
-![testimg2]({{ site.url }}/img/spongebob.png)
 
+## Q
 
 1. Interning Pool에서 있나/없나를 확인하는 성능 ? (hash 구조?)
-2. Interning Pool은 어떤 메모리 영역에? (heap)
+2. Interning Pool은 어떤 메모리 영역에? (heap추측)
