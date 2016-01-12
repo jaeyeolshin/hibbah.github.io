@@ -111,14 +111,50 @@ if(str1 == str2) // false
 {% endhighlight %}
 비록 같은 값("abc")을 가지긴 했지만 new 연산자를 통해 String객체를 각각 별도로 생성했으므로 str1과 str2는 서로 다른 참조값을 가지게 되므로, 참조변수를 비교하는 코드 **str1 == str2**는 false를 반환하게 된다. 위의 코드를 메모리 구조 관점에서 간단하게 살펴본 그림은 아래와 같다.
 
-![memory]({{ site.url }}/img/java_String1.png)
+![memory]({{ site.url }}/img/java_String1.jpg)
 
-
-
+String(string)타입에 대한 ==연산자를 C++에서는 **operator ==**로 해석하는 반면, Java에서는 참조변수가 가진 참조값 자체에 대한 비교로 해석한다는 것을 알아두자.
 
 ----
 
 ## Interning Pool
+
+이제 뭔가 알 것도 같은데 도입부에서 언급했던 아래의 코드는 여전히 혼란으로 남아있다.
+
+{% highlight java %}
+// Java
+String str1 = "abc";
+String str2 = "abc";
+
+if(str1 == str2) // true
+  System.out.println("Same"); // print "Same"
+{% endhighlight %}
+String객체는 독특하게 할당연산자를 통해서도 생성이 가능한데, 생성방시간 다를뿐인데 왜 new연산자를 통한 객체 생성에서는 false로 해석하고 리터럴값의 할당을 통해 객체를 생성한 위의 코드는 true로 해석하는 것일까?
+
+결론부터 얘기하면, 리터럴값의 할당을 통한 객체의 생성은 new 연산자를 사용하는것과 객체 생성 과정이 조금 다르다.
+
+리터럴값의 할당을 통한 객체 생성은 **Interning Pool**이라는 메모리 공간을 참조하게 되는데, 먼저 Interning이 왜 등장했는지를 이해하기 위해 아래의 코드를 살펴본다.
+
+{% highlight java %}
+// Java
+String str1 = "abc";
+String str2 = "abc";
+String str3 = "abc";
+        ...
+String strX = "abc";
+{% endhighlight %}
+X개의 String객체를 생성하는데 모두 동일한 값("abc")를 갖도록 한다. 여기서 만약 X가 굉장히 크다면 동일한 값을 가지는 객체 X개를 모두 별도로 생성하게 되므로 메모리 낭비가 커진다.
+
+위와 같은 메모리 낭비를 줄이고자 등장한 기법(?)이 Interning이며, 리터럴값의 할당을 통해 객체를 생성할때는 무작정 객체를 생성하는 것이 아니라 **Interning Pool**이라는 메모리 영역을 참조하여 동일한 값의 객체가 이미 메모리에 존재하는지 확인하는 과정을 거친다.
+
+먼저, 첫 라인의 **String str1 = "abc"**에서 Interning Pool을 참조하여 "abc"라는 값을 가진 객체가 존재하지 않음을 확인하고 힙메모리에 "abc"값을 갖는 String객체를 생성한다. 이후의 모든 라인은 Interning Pool을 참조하여 "abc"라는 값의 String객체가 이미 메모리 영역에 존재함을 알고, 해당 객체의 참조값을 반환하게된다. 즉, str1... strX까지 X개의 참조변수는 모두 동일한 하나의 객체를 참조하게 된다.
+
+![memory]({{ site.url }}/img/java_String2.jpg)
+
+new연산자를 이용한 방식은 앞에서도 언급했듯이 new연산자를 통해 각각 별도의 객체를 생성함을 **명시적**으로 나타낸 것이므로 Interning Pool을 참조하지 않고 모두 별개의 객체로 생성한다.
+
+따라서, 리터럴값 할당으로 같은 값의 String객체를 생성한 경우에는 str1 == str2가 true를 반환하는 이유를 이해할 수 있다.
+
 
 
 ----
@@ -139,3 +175,5 @@ if(str1 == str2) // false
 ![testimg2]({{ site.url }}/img/spongebob.png)
 
 
+1. Interning Pool에서 있나/없나를 확인하는 성능 ? (hash 구조?)
+2. Interning Pool은 어떤 메모리 영역에? (heap)
