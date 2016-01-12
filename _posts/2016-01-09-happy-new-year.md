@@ -1,7 +1,3 @@
-
-
-
-
 ---
 layout: post
 title: Java - Interning Pool
