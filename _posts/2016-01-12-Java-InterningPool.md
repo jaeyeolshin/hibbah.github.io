@@ -3,9 +3,6 @@ layout: post
 title: Java - Interning Pool
 comments: true
 ---
-
-# Java - Interning Pool
-
 ## 요약
 C++문법에 익숙한 사람이 Java의 세계에 입문하면서 부딪히게 되는 몇 가지 오류들에 대해 다룬다.
 Interning Pool, immutable
