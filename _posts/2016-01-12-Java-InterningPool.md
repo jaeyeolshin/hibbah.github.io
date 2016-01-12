@@ -89,9 +89,9 @@ class string{
 Object obj = new Object();
 {% endhighlight %}
 
-할당연산자(=)를 기준으로 우측의 new Object()는 실제로 Object타입의 **객체**를 힙(heap)메모리에 생성하고, 좌측의 Object obj는 방금 생성한 객체를 코드상에서 참조하여 다루기위해 생성된 객체의 참조값(주소값?)을 저장하는 **참조변수**이다.
+할당연산자(=)를 기준으로 우측의 new Object()는 실제로 Object타입의 **객체**를 힙(heap)메모리에 생성한 뒤 해당 객체의 참조값을 반환하고, 좌측의 Object obj는 방금 생성한 객체를 코드상에서 참조하여 다루기위해 객체의 참조값(주소값?)을 저장하는 **참조변수**이다.
 
-따라서, 앞에서 보았던 코드 **str1.equals(str2)**를 조금 더 깊게 해석하면,
+따라서, 앞에서 보았던 코드 **str1.equals(str2)**를 조금 더 길게 해석하면,
 
 'String변수 str1과 str2를 비교한다'보다는
 
@@ -109,7 +109,10 @@ String str2 = new String("abc");
 if(str1 == str2) // false
   System.out.println("Same"); // skip
 {% endhighlight %}
-비록 같은 값("abc")을 가지긴 했지만 new 연산자를 통해 String객체를 각각 별도로 생성했으므로 str1과 str2는 서로 다른 참조값을 가지게 되므로, 참조변수를 비교하는 코드 **str1 == str2**는 false를 반환하게 된다.
+비록 같은 값("abc")을 가지긴 했지만 new 연산자를 통해 String객체를 각각 별도로 생성했으므로 str1과 str2는 서로 다른 참조값을 가지게 되므로, 참조변수를 비교하는 코드 **str1 == str2**는 false를 반환하게 된다. 위의 코드를 메모리 구조 관점에서 간단하게 살펴본 그림은 아래와 같다.
+
+![memory]({{ site.url }}/img/java_String1.png)
+
 
 
 
