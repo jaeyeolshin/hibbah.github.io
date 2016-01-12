@@ -12,8 +12,8 @@ C++문법에 익숙한 사람이 Java의 세계에 입문하면서 부딪히게 
 
 ## 고통의 시작
 
-**C++**
 ```cpp
+// C++
 string str1 = "abc";
 string str2 = "abc";
 
@@ -22,8 +22,8 @@ if(str1 == str2) // true
 ```
 위의 C++코드는 의도한대로 "Same"을 출력한다.
 
-**Java**
 ```java
+// Java
 String str1 = "abc";
 String str2 = "abc";
 
@@ -36,8 +36,8 @@ Java또한 마찬가지로 **의도**한대로 "Same"을 출력한다.
 
 '아! Java에서는 객체 생성을 new연산자를 통해 할당하지!'라는 생각으로 객체 생성법만 달리할 뿐, 위와 동일한 코드를 작성한다.
 
-**Java**
 ```java
+// Java
 String str1 = new String("abc");
 String str2 = new String("abc");
 
