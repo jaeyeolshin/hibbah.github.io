@@ -8,6 +8,8 @@ layout: page
 
 ----
 
+![memory1]({{ site.url }}/img/baby.jpg)
+
 NHN Entertainment<br>
 TOAST ROOKIE 3rd
 
