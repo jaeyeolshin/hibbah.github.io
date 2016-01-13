@@ -2,9 +2,9 @@
 layout: page
 ---
 
-# JooHyun-Won
-
 ![memory1]({{ site.url }}/img/baby.jpg)
+
+# JooHyun-Won
 
 ## 원주현, Hibbah
 
