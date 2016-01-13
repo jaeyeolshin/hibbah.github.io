@@ -4,11 +4,11 @@ layout: page
 
 # JooHyun-Won
 
+![memory1]({{ site.url }}/img/baby.jpg)
+
 ## 원주현, Hibbah
 
 ----
-
-![memory1]({{ site.url }}/img/baby.jpg)
 
 NHN Entertainment<br>
 TOAST ROOKIE 3rd
