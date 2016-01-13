@@ -14,7 +14,7 @@ C++문법에 익숙한 사람이 Java의 세계에 입문하면서 부딪히게 
 
 ----
 
-## 2. 의문의 시작 (고통의 시작)
+## 2. 의문의 시작
 
 {% highlight cpp %}
 // C++
@@ -38,7 +38,7 @@ if(str1 == str2) // true
 {% endhighlight %}
 Java또한 마찬가지로 **의도**한대로 "Same"을 출력한다.
 
-(사실 "Same"이 출력되는 이유가 **의도**와는 전혀 다른 이유지만, 결과적으로 "Same"이 출력되어 버리기 때문에 아래 코드의 결과에서 혼란을 마주하게 된다.)
+(사실 "Same"이 출력되는것이 **의도**와는 전혀 다른 이유지만, 결과적으로 "Same"이 출력되어 버리기 때문에 아래 코드의 결과에서 혼란을 마주하게 된다.)
 
 '아! Java에서는 객체 생성을 new연산자를 통해 할당하지!'라는 생각으로 객체 생성법만 달리할 뿐, 위와 동일한 코드를 작성한다.
 
@@ -160,6 +160,10 @@ new연산자를 이용한 방식은 앞에서도 언급했듯이 new연산자를
 
 ## 5. Immutable Object (작성중)
 
+Interning과 관련하여 서로다른 참조변수가 같은 객체를 참조하고 있을 때, 해당 객체의 데이터를 변경하려는 의도로 아래와 같은 코드 작성.
+
+C++로 생각하면, 동일 객체를 참조하고 있었으므로 str1과 str2가 가리키는 객체는 동일 객체 "abcdef"라고 생각.
+
 {% highlight java %}
 String str1 = "abc";
 String str2 = "abc";
@@ -170,9 +174,15 @@ if(str1 == str2) // false
   System.out.println("Same");
 {% endhighlight %}
 
+str1 += "~~", String::concat() 는 C++과 달리, 기존에 존재하던 객체는 그대로 두고 전혀 다른 새로운 String객체를 생성하여 반환.
+
+str1 += "~~"과 같이 새로 생성된 객체를 참조변수 str1에 할당하면, 기존에 str1이 참조하고 있던 String객체는 garbege collector에 의해 제거.
+
+
 
 
 ## Q
 
 1. Interning Pool에서 있나/없나를 확인하는 성능 ? (hash 구조?)
 2. Interning Pool은 어떤 메모리 영역에? (heap추측)
+3. String객체 외에 Interning이 적용되는 객체는 ? (immutable 속성을 갖는 모든 객체?) 
