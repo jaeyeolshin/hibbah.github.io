@@ -28,7 +28,7 @@ avatar: "/img/spongebob.png"
 # List of links in the navigation bar
 navbar-links:
   Home: ""
-  About Me: "aboutme"
+  About: "about"
 #  Author's home: "http://deanattali.com"
 
 # --- Footer options --- #
