@@ -14,6 +14,5 @@ TOAST ROOKIE 3rd
 
 <br><br>
 
-email: wjy721@naver.com
-
+email: wjy721@naver.com<br>
 github: [github.com/hibbah](https://github.com/hibbah)
