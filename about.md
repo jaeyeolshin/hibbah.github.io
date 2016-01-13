@@ -11,7 +11,5 @@ layout: page
 NHN Entertainment<br>
 TOAST ROOKIE 3rd
 
-<br>
-
 email: wjy721@naver.com<br>
 github: [github.com/hibbah](https://github.com/hibbah)
