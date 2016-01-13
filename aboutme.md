@@ -8,8 +8,7 @@ layout: page
 
 ----
 
-NHN Entertainment
-
+NHN Entertainment<br>
 TOAST ROOKIE 3rd
 
 <br><br>
