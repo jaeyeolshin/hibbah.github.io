@@ -24,7 +24,7 @@ comments: true
 2주 동안 많지는 않지만 제법 다양하게 시도를 해본 것 같다.
 여지껏 cpp소스파일 달랑 하나에 C/C++컴파일러만 곁들여지면 끝나는 코딩만 해왔으니.. xml파일은 무엇이며.. properties는 또 무엇이고.. 프로젝트 익스플로러가 나를 너무 힘들게 만들었는데,
 
-![oh..god..]({{ site.url }}/img/spring_project_explorer.jpg)
+![oh..god..]({{ site.url }}/img/spring_package_explorer.JPG)
 
 > 살려주시옵소서..
 
