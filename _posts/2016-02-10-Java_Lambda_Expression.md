@@ -48,22 +48,19 @@ public:
 
 {% highlight cpp %}
 int main() {
-
 	vector <Student> students = {
 		{ "Jack", 80 },
 		{ "John", 100 },
 		{ "Mike", 75 }
 	};
-	
 	sort(students.begin(), students.end());
 }
 {% endhighlight %}
 
-여기서 람다식을 적용하면 데이터 타입을 정의하는 클래스 내부에 비교기준을 정의하지 않더라도 아래와 같이 sort()함수를 이용할 수 있다.
+여기서 람다식을 적용하면 위와 같이 클래스 내부에 `operator <`를 통한 비교기준을 정의하지 않더라도 아래와 같이 sort()함수를 이용할 수 있다. 원래 sort()함수의 세 번째 매개변수는 정렬하려는 데이터의 비교기준을 명확히 정의한 bool타입을 반환형으로 하는 함수의 이름(함수가 정의된 주소영역)을 넘겨줘야 하는데, 람다식을 이용한 익명함수를 통해 인자를 전달하는 영역에 곧장 비교기준을 정의한 것이다.
 
 {% highlight cpp %}
 int main() {
-
 	vector <Student> students = {
 		{ "Jack", 80 },
 		{ "John", 100 },
@@ -88,7 +85,42 @@ int main() {
 
 ----
 
-## 람다식 실전
+## Java8 - Lambda 예제
+
+{% highlight java %}
+class Student {
+	public String name;
+	public String gender;
+	public int age;
+	public int score;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List <Student> students = Arrays.asList(
+    	    new Student("Mike", "MALE", 21, 80),
+    	    new Student("John", "MALE", 24, 75),
+    	    new Student("July", "FEMALE", 23, 100),
+    	    ...
+    	);
+    }
+}
+
+{% endhighlight %}
+
+아래는 위에서 정의한 데이터 타입에 해당하는 데이터들이 담긴 List의 모든 원소를 출력하는 작업을 표현한 코드이다.
+
+{% highlight java %}
+// 평소방식
+for(Student s : students) {
+    System.out.println(s);
+}
+
+// Lambda
+students.forEach((Student s) -> System.out.println(s));
+{% endhighlight %}
+
+사실 평소방식의 코드도 중괄호 영역을 제외하면 한 줄 코드로 표현할 수 있고, 코드상으로도 의미가 비슷하고 아직은 큰 차이가 느껴지지 않는다.
 
 
 
@@ -136,13 +168,13 @@ int main() {
 
 ## 참고문서
 
-https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98%ED%98%95_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D
+[https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98%ED%98%95_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D](https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98%ED%98%95_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D)
 
-http://tmondev.blog.me/220412722908?Redirect=Log&from=postView
+[http://tmondev.blog.me/220412722908?Redirect=Log&from=postView](http://tmondev.blog.me/220412722908?Redirect=Log&from=postView)
 
-http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
+[http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
 
-http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf
+[http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf](http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf)
 
 
 
