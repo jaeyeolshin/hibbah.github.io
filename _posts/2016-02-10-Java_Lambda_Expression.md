@@ -6,8 +6,6 @@ comments: true
 
 <br><br>
 
-----
-
 ## 개요
 
 컴퓨터과학 및 수리논리학에서 함수 정의, 함수 적용, 귀납적 함수를 추상화한 형식 체계이다. 1930년대 알론조 처치가 수학기초론을 연구하는 과정에서 람다 대수의 형식을 제안하였다. 
@@ -21,8 +19,6 @@ comments: true
 ![imperative_functional]({{ site.url }}/img/imperative_functional.JPG)
 
 <br>
-
-----
 
 ## 맛보기 (경험담)
 
@@ -83,8 +79,6 @@ int main() {
 
 <br>
 
-----
-
 ## Java8 - Lambda 예제
 
 {% highlight java %}
@@ -124,40 +118,102 @@ Collections.sort(personList, (Person p1, Person p2) -> p1.getName().compareTo(p2
 
 <br>
 
-----
-
 ## 왜 쓰는가 ?
 
-그렇다면 람다식은 왜 등장한 것일까?
+그렇다면 람다식을 써서 좋은점이 무엇일까 ?
 
-앞에서 언급한 **가독성**에 관한것이 전부... 일리가 없다.
+앞에서 언급한 **가독성**에 관한것이 전부... 일리가 없다. 다행히 대략적인 전개정도는 쉽게 파악할 수 있게 잘 정리해준 [블로그 포스트](http://tmondev.blog.me/220288794560)를 발견하여 이해하는데 많은 도움이 되었다.
 
-가독성이 전부일리가..
+요약하자면, 무어의 법칙(Moore's law)대로 반도체 직접회로의 성능이 18개월마다 2배씩 증가하고 있었는데 어느 순간부터 반도체 산업의 모든 경쟁 업체들이 최대 clock speed 4GHz를 넘지 못하고 있었다. 그래서 '하나의 성능을 더 못 올리면, 여러개를 넣자!'라는 생각으로 이때부터 CPU칩 내부에 다수의 코어를 장착한 **멀티코어** CPU가 등장하게 되었다. 멀티코어의 등장은 프로그래머들에게 새로운 고민거리를 안겨주었는데, 예전에는 프로그램을 짜두면 하드웨어의 발전에 따라 프로그램의 성능도 향상된 반면에 앞으로는 CPU내부에 있는 코어들에게 프로그램의 작업량을 적절히 분배해서 다중 코어들을 잘 활용하는 **병렬 프로그래밍**이 필수적인 요소가 된 것이다.
 
-4Ghz 장벽.. 멀티코어... 멀티코어를 잘 활용하는 프로그래밍..(DX11 DX12 속도 비교 사례)
+그런데 이 병렬 프로그래밍이 생각보다 쉽지가 않다. 작업량을 그냥 무식하게 N등분해서 분배하면 될 일이 아니라, 각 작업의 단위들이 공유하는 자원이 있다거나.. 서로 연관관계가 있는 경우 race condition이나 deadlock을 유발할 가능성이 있다.
 
-병렬 프로그래밍 코드를 짜는데 고려해야 할 사항들.. 각 실행흐름들 간에 공유하는 자원들로 인해 발생하는 race condition..  복잡..
+병렬 프로그래밍과 관련한 내용으로 앞에서 언급한 블로그에서 게시한 [포스트](http://blog.naver.com/PostView.nhn?blogId=tmondev&logNo=220412722908&parentCategoryNo=&categoryNo=6&viewDate=&isShowPopularPosts=false&from=postView)의 내용중 일부를 적어보자면..
 
-근데 java lambda쓰면 알아서 다 해준다..
+아래는 학생이라는 데이터 타입에 대해 다수의 학생들 중 최고 점수를 얻은 학생을 찾는 프로그램 코드이다.
 
-좀 어렵..
+{% highlight java %}
+class Student 
+{ String name; int gradYear; double score; } 
+ 
+List students = ...; 
+ 
+double max = Double.MIN_VALUE; 
+for (Student s : students) { 
+   if (s.gradYear == 2011) max = Math.max(max, s.score); 
+} 
+return max; 
+{% endhighlight %}
+
+만약 List에 꽤 많은 원소들이 저장되어 있어, 이를 병렬 프로그래밍으로 해결하고자 코드를 작성하면..
+
+{% highlight java %}
+public class Task extends java.util.concurrent.RecursiveAction { 
+    List students; 
+    Task(List as) { students = ss; } 
+    Task leftHalf() { 
+         int n = students.size(); 
+        return new Task (students.subList(0, n/2)); 
+     } 
+    Task rightHalf() { 
+          int n = students.size(); 
+           return new Task (students.subList(n/2, n)); 
+    } 
+ 
+   double computeSequentially() { 
+        double max = Double.MIN_VALUE; 
+        for (Student s : students) { 
+           if (s.gradYear == 2011) max = Math.max(max, s.score); 
+       } 
+       return max; 
+    } 
+ 
+    static final int SEQUENTIAL_THRESHOLD = 1 << 14; 
+    double result; 
+ 
+    protected void compute() {
+      if (students.size() < SEQUENTIAL_THRESHOLD) {
+           result = computeSequentially(); 
+      } else { 
+         Task left = leftHalf(); 
+         Task right = rightHalf(); 
+          invokeAll(left, right); // INVOKE-IN-PARALLEL (병행 처리 시작) 
+          result = Math.max(left.result, right.result);
+         } 
+     } 
+ 
+     static double compute(List as) { 
+          ForkJoinPool pool = new ForkJoinPool(); 
+         Task t = new Task(ss); 
+         pool.invoke(t); 
+         return t.result;
+         } 
+  } 
+{% endhighlight %}
+
+간단한 프로그램조차 병렬 프로그래밍으로 바꾸는게 쉽지 않은 작업임을 확실하게 느낄 수 있다.
+
+아래의 코드는 자바8 스트림API와 람다를 적용하여 위의 코드를 개선한 것이다.
+
+{% highlight java %}
+double max = students.parallel()
+                           .filter(s -> s.gradYear == 2011) 
+                           .map(s -> s.score) 
+                           .reduce(0.0, Math#max);
+{% endhighlight %}
+
+* 원본출처 : [http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf](http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf)
+
+스트림 API 내용을 몰라서.. 코드 한 줄 한 줄 의미를 파악하기에는 아직 힘들지만, 직전의 코드와 단순하게만 비교해보아도 월등하게 차이가 난다는것을 알 수 있다.
 
 <br>
 
-----
-
 ## 참고문서
 
-[https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98%ED%98%95_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D](https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98%ED%98%95_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D)
+[https://ko.wikipedia.org/wiki/함수형_프로그래밍](https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98%ED%98%95_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D)
 [http://tmondev.blog.me/220412722908?Redirect=Log&from=postView](http://tmondev.blog.me/220412722908?Redirect=Log&from=postView)
-[http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+[http://tmondev.blog.me/220288794560](http://tmondev.blog.me/220288794560)
+[http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html#section2](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html#section2)
 [http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf](http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf)
-
-
-
-
-
-
-
 
 
