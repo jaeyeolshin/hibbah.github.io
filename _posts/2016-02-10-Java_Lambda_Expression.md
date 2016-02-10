@@ -88,48 +88,49 @@ int main() {
 ## Java8 - Lambda 예제
 
 {% highlight java %}
-class Student {
-	public String name;
-	public String gender;
-	public int age;
-	public int score;
+class Person {
+    private String name;
+    private String eMail;
+    private String phone;
+    private String address;
+    private String gender;
+    private int age;
 }
 
 public class Main {
     public static void main(String[] args) {
-        List <Student> students = Arrays.asList(
-    	    new Student("Mike", "MALE", 21, 80),
-    	    new Student("John", "MALE", 24, 75),
-    	    new Student("July", "FEMALE", 23, 100),
-    	    ...
-    	);
+        List<Person> personList = Person.createShortList();
     }
 }
-
 {% endhighlight %}
 
-아래는 위에서 정의한 데이터 타입에 해당하는 데이터들이 담긴 List의 모든 원소를 출력하는 작업을 표현한 코드이다.
+아래는 위에서 정의한 Person타입에 해당하는 데이터들이 담긴 personList를 정렬하는 작업을 표현한 코드이다.
 
 {% highlight java %}
 // 평소방식
-for(Student s : students) {
-    System.out.println(s);
-}
+Collections.sort(personList, new Comparator<Person>(){
+    public int compare(Person p1, Person p2){
+        return p1.getName().compareTo(p2.getName());
+    }
+});
 
 // Lambda
-students.forEach((Student s) -> System.out.println(s));
+Collections.sort(personList, (Person p1, Person p2) -> p1.getName().compareTo(p2.getName()));
 {% endhighlight %}
 
-사실 평소방식의 코드도 중괄호 영역을 제외하면 한 줄 코드로 표현할 수 있고, 코드상으로도 의미가 비슷하고 아직은 큰 차이가 느껴지지 않는다.
+첫 번째 방식은 `Collections.sort()`함수의 두 번째 인자로 전달해야하는 데이터의 비교기준을 표현하는데 Comparator 클래스의 인스턴스를 생성하여 추상메소드인 `compare()`를 곧장 명시해주는 경우이다.
 
-
-
+두 번째 방식은 람다식을 적용하여 정렬하는 코드를 한 줄로 우아하게 표현한 경우이다. 짧으면서도 읽는데 무리없이 직관적으로 쉽게 이해할 수 있다. 만약, 첫 번째 방식에서 Comparator를 상속받아 비교기준을 정의한 클래스를 외부에 정의하고 `Collections.sort()`함수의 두 번째 인자로 전달했다면 정렬하는 작업을 표현한 코드가 여러곳에 분산되어 코드를 읽는데 더 어려웠을 것이다.
 
 <br>
 
 ----
 
 ## 왜 쓰는가 ?
+
+그렇다면 람다식은 왜 등장한 것일까?
+
+앞에서 언급한 **가독성**에 관한것이 전부... 일리가 없다.
 
 가독성이 전부일리가..
 
@@ -141,27 +142,6 @@ students.forEach((Student s) -> System.out.println(s));
 
 좀 어렵..
 
-
-
-
-<br>
-
-----
-
-## 부제
-
-
-
-
-<br>
-
-----
-
-## 부제
-
-
-
-
 <br>
 
 ----
@@ -169,11 +149,8 @@ students.forEach((Student s) -> System.out.println(s));
 ## 참고문서
 
 [https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98%ED%98%95_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D](https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98%ED%98%95_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D)
-
 [http://tmondev.blog.me/220412722908?Redirect=Log&from=postView](http://tmondev.blog.me/220412722908?Redirect=Log&from=postView)
-
 [http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
-
 [http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf](http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf)
 
 
