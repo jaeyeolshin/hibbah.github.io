@@ -49,7 +49,6 @@ http://cybaek.com/java/2015/04/28/java8-lambda.html
 
 
 
-![oh..god..]({{ site.url }}/img/spring_package_explorer.JPG)
 
 
 
