@@ -115,7 +115,8 @@ Collections.sort(personList, new Comparator<Person>(){
 });
 
 // Lambda
-Collections.sort(personList, (Person p1, Person p2) -> p1.getName().compareTo(p2.getName()));
+Collections.sort(personList,
+        (Person p1, Person p2) -> p1.getName().compareTo(p2.getName()));
 {% endhighlight %}
 
 첫 번째 방식은 `Collections.sort()`함수의 두 번째 인자로 전달해야하는 데이터의 비교기준을 표현하는데 Comparator 클래스의 인스턴스를 생성하여 추상메소드인 `compare()`를 곧장 명시해주는 경우이다.
@@ -212,7 +213,7 @@ double max = students.parallel()
 
 * 원본출처 : [http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf](http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf)
 
-스트림 API 내용을 몰라서.. 코드 한 줄 한 줄 의미를 파악하기에는 아직 힘들지만, 직전의 코드와 단순하게만 비교해보아도 월등하게 차이가 난다는것을 알 수 있다.
+스트림 API 내용을 몰라서.. 코드 한 줄 한 줄 의미를 파악하기에는 조금 무리가 있지만, 직전의 코드와 단순하게만 비교해보아도 월등하게 차이가 난다는것을 알 수 있다.
 
 <br>
 
