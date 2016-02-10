@@ -6,6 +6,8 @@ comments: true
 
 <br><br>
 
+----
+
 ## 개요
 
 컴퓨터과학 및 수리논리학에서 함수 정의, 함수 적용, 귀납적 함수를 추상화한 형식 체계이다. 1930년대 알론조 처치가 수학기초론을 연구하는 과정에서 람다 대수의 형식을 제안하였다. 
@@ -19,6 +21,8 @@ comments: true
 ![imperative_functional]({{ site.url }}/img/imperative_functional.JPG)
 
 <br>
+
+----
 
 ## 맛보기 (경험담)
 
