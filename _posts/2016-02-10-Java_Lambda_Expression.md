@@ -4,9 +4,6 @@ title: Java - Lambda Exression
 comments: true
 ---
 
-개요 -> c++/java 람다 예시(가독성위주) -> 람다왜등장?(ㄹㅇ 가독성이 전부? -> 멀티코어)
-
-
 <br><br>
 
 ----
@@ -108,7 +105,7 @@ int main() {
 
 병렬 프로그래밍 코드를 짜는데 고려해야 할 사항들.. 각 실행흐름들 간에 공유하는 자원들로 인해 발생하는 race condition..  복잡..
 
-근데 java lambda쓰면 알아서 다 해준다...(ㅅㅂ)
+근데 java lambda쓰면 알아서 다 해준다..
 
 좀 어렵..
 
