@@ -6,9 +6,9 @@ comments: true
 
 <br><br>
 
-----
-
 ## 개요
+
+----
 
 컴퓨터과학 및 수리논리학에서 함수 정의, 함수 적용, 귀납적 함수를 추상화한 형식 체계이다. 1930년대 알론조 처치가 수학기초론을 연구하는 과정에서 람다 대수의 형식을 제안하였다. 
 
@@ -22,9 +22,9 @@ comments: true
 
 <br>
 
-----
-
 ## 맛보기 (경험담)
+
+----
 
 예전에 우연히 C++에서 람다식을 활용한 성능향상에 관련된 문서를 읽고 C++에서 간단한 람다식을 구현해본 적이 있는데, 아주 잠깐 람다식에 대해 맛보고 느꼈던 경험에 대해 얘기해보고자 한다.
 
@@ -85,6 +85,8 @@ int main() {
 
 ## Java8 - Lambda 예제
 
+----
+
 {% highlight java %}
 class Person {
     private String name;
@@ -123,6 +125,8 @@ Collections.sort(personList, (Person p1, Person p2) -> p1.getName().compareTo(p2
 <br>
 
 ## 왜 쓰는가 ?
+
+----
 
 그렇다면 람다식을 사용해서 좋은점이 무엇일까 ?
 
@@ -213,6 +217,8 @@ double max = students.parallel()
 <br>
 
 ## 참고문서
+
+----
 
 [https://ko.wikipedia.org/wiki/함수형_프로그래밍](https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98%ED%98%95_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D)
 [http://tmondev.blog.me/220412722908?Redirect=Log&from=postView](http://tmondev.blog.me/220412722908?Redirect=Log&from=postView)
