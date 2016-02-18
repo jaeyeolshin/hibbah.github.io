@@ -22,7 +22,7 @@ string str1 = "abc";
 string str2 = "abc";
 
 if(str1 == str2) // true
-  cout<<"Same"<<endl;
+  cout<<"Same"<<endl; // print "Same"
 ```
 위의 C++코드는 의도한대로 "Same"을 출력한다.
 
