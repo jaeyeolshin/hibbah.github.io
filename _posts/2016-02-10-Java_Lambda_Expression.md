@@ -32,7 +32,7 @@ C++에서 선형 자료구조(배열, vector, ..)에 저장된 데이터를 정�
 
 가령, 아래와 같이 학생 정보를 저장하는 데이터 타입을 정의하고 시험점수(score)를 기준으로 데이터를 정렬하기 위해 `operator <`를 통해 비교 기준을 정의할 수 있다.
 
-{% highlight cpp %}
+```cpp
 class Student {
 public:
 	string name;
@@ -42,11 +42,11 @@ public:
 		return score < student.score;
 	}
 };
-{% endhighlight %}
+```
 
 위에서 정의한 비교기준에 의해 아래와 같이 `STL::sort()`를 사용할 수 있다.
 
-{% highlight cpp %}
+```cpp
 int main() {
 	vector <Student> students = {
 		{ "Jack", 80 },
@@ -55,11 +55,11 @@ int main() {
 	};
 	sort(students.begin(), students.end());
 }
-{% endhighlight %}
+```
 
 여기서 람다식을 적용하면 위와 같이 클래스 내부에 `operator <`를 통한 비교기준을 정의하지 않더라도 아래와 같이 sort()함수를 이용할 수 있다. 원래 sort()함수의 세 번째 매개변수는 정렬하려는 데이터의 비교기준을 명확히 정의한 bool타입을 반환형으로 하는 함수의 이름(함수가 정의된 주소영역)을 넘겨줘야 하는데, 람다식을 이용한 익명함수를 통해 인자를 전달하는 영역에 곧장 비교기준을 정의한 것이다.
 
-{% highlight cpp %}
+```cpp
 int main() {
 	vector <Student> students = {
 		{ "Jack", 80 },
@@ -73,7 +73,7 @@ int main() {
 		}
 	);
 }
-{% endhighlight %}
+```
 
 처음 썼을땐 **[](){}**를 연달아 쓰는 모양이 이상하기도 하고, 함수호출의 인자로 전달하는 부분에 익명함수를 정의하는 중괄호 {..} 영역을 바로 쓰는것이 이상하게 보이기도 하고 매우 거북스러웠다.
 
@@ -87,7 +87,7 @@ int main() {
 
 ----
 
-{% highlight java %}
+```java
 class Person {
     private String name;
     private String eMail;
@@ -102,11 +102,11 @@ public class Main {
         List<Person> personList = Person.createShortList();
     }
 }
-{% endhighlight %}
+```
 
 아래는 위에서 정의한 Person타입에 해당하는 데이터들이 담긴 personList를 정렬하는 작업을 표현한 코드이다.
 
-{% highlight java %}
+```java
 // 평소방식
 Collections.sort(personList, new Comparator<Person>(){
     public int compare(Person p1, Person p2){
@@ -117,7 +117,7 @@ Collections.sort(personList, new Comparator<Person>(){
 // Lambda
 Collections.sort(personList,
         (Person p1, Person p2) -> p1.getName().compareTo(p2.getName()));
-{% endhighlight %}
+```
 
 첫 번째 방식은 `Collections.sort()`함수의 두 번째 인자로 전달해야하는 데이터의 비교기준을 표현하는데 Comparator 클래스의 인스턴스를 생성하여 추상메소드인 `compare()`를 곧장 명시해주는 경우이다.
 
@@ -147,7 +147,7 @@ Collections.sort(personList,
 
 아래는 학생이라는 데이터 타입에 대해 다수의 학생들 중 최고 점수를 얻은 학생을 찾는 프로그램 코드이다.
 
-{% highlight java %}
+```java
 class Student 
 { String name; int gradYear; double score; } 
  
@@ -158,11 +158,11 @@ for (Student s : students) {
    if (s.gradYear == 2011) max = Math.max(max, s.score); 
 } 
 return max; 
-{% endhighlight %}
+```
 
 만약 List에 꽤 많은 원소들이 저장되어 있어, 이를 병렬 프로그래밍으로 해결하고자 코드를 작성하면..
 
-{% highlight java %}
+```java
 public class Task extends java.util.concurrent.RecursiveAction { 
     List students; 
     Task(List as) { students = ss; } 
@@ -204,18 +204,18 @@ public class Task extends java.util.concurrent.RecursiveAction {
          return t.result;
          } 
   } 
-{% endhighlight %}
+```
 
 간단한 프로그램조차 병렬 프로그래밍으로 바꾸는게 쉽지 않은 작업임을 확실하게 느낄 수 있다.
 
 아래의 코드는 자바8 스트림API와 람다를 적용하여 위의 코드를 개선한 것이다.
 
-{% highlight java %}
+```java
 double max = students.parallel()
                            .filter(s -> s.gradYear == 2011) 
                            .map(s -> s.score) 
                            .reduce(0.0, Math#max);
-{% endhighlight %}
+```
 
 * 원본출처 : [http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf](http://www.oracle.com/kr/corporate/magazines/winter-tech2-1429486-ko.pdf)
 
