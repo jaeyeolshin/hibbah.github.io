@@ -1,6 +1,6 @@
 ---
 layout: post
-title: \"그냥 Mac이 편해요\"
+title: "그냥 Mac이 편해요"
 comments: true
 ---
 
