@@ -27,11 +27,11 @@ comments: true
 
 안드로이드 스튜디오에서 개발을 할 것이므로 굳이 환경변수 설정을 할 필요는 없지만 안드로이드 외에 다른 작업들도 할 것을 생각하면 미리 해두는게 좋다. 윈도우 환경에서는 `내컴퓨터-속성`을 클릭하고 팝업되는 창의 좌측에서 `고급 시스템 설정`을 눌러 시스템 설정 탭을 띄운 뒤에 `환경 변수` 메뉴를 클릭한다. 그리고 `Path`에 방금 설치한 JDK의 폴더 경로(_C:\Program Files (x86)\Java\jdk1.8.0_60_)를 추가해준다.
 
-![환경변수]({{ site.url }}/img/system_path2.JPG)
+![환경변수]({{ site.url }}/img/system_path2.jpg)
 
 여기까지 완료했다면, 윈도우 명령프롬프트를 띄워서 **javac -version**을 입력하여 아래와 같이 자바 버전정보고 옳게 출력되는지 확인한다.
 
-![Java]({{ site.url }}/img/java_version.JPG)
+![Java]({{ site.url }}/img/java_version.jpg)
 
 
 <br><br>
