@@ -71,6 +71,6 @@ push : `Ctrl + Shift + K`
 ----
 
 ## 참고문서
-- http://wii.logdown.com/posts/2013/11/15/android-studio-git-tutorial
-- https://www.davidlab.net/ko/tech/android-studio-tips-git-integration-part1/
-- http://blog.dudmy.net/android-studio-github-sync/
+- [http://wii.logdown.com/posts/2013/11/15/android-studio-git-tutorial](http://wii.logdown.com/posts/2013/11/15/android-studio-git-tutorial)
+- [https://www.davidlab.net/ko/tech/android-studio-tips-git-integration-part1/](https://www.davidlab.net/ko/tech/android-studio-tips-git-integration-part1/)
+- [http://blog.dudmy.net/android-studio-github-sync/](http://blog.dudmy.net/android-studio-github-sync/)
