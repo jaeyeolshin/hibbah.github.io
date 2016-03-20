@@ -28,12 +28,8 @@ comments: true
 
 Local Repository에 등록을 완료하면 스튜디오상에 표시되는 각종 파일들의 색깔이 다르게 나타나는데 각 색상별로 의미하는 바는 아래와 같다.
 
-##### 파일상태
-
 - 붉은색 : git에서 추적하지 않는 파일. `add`필요
-
 - 파란색 : 변동사항이 있는 파일. `commit` or `push`
-
 - 초록색 : 변동 사항이 없는 파일. 최신상태.
 
 <br><br>
@@ -68,7 +64,6 @@ Local Repository에 등록을 완료하면 스튜디오상에 표시되는 각�
 **git remote add origin 복사한주소**를 타이핑하여 현재경로(로컬)를 Hibbah의 AndroidProject(원격)저장소에 등록한다. 이후부터는 Git을 이용하기 위해 별도의 버전관리 툴을 사용할 필요없이, 안드로이드 스튜디오 내에서 아래의 단축키로 Git의 Remote Repository에 commit, push, .. 의 작업을 할 수 있다.
 
 commit : `Ctrl + K`
-
 push : `Ctrl + Shift + K`
 
 <br><br>
