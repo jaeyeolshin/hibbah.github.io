@@ -63,8 +63,8 @@ Local Repository에 등록을 완료하면 스튜디오상에 표시되는 각�
 
 **git remote add origin 복사한주소**를 타이핑하여 현재경로(로컬)를 Hibbah의 AndroidProject(원격)저장소에 등록한다. 이후부터는 Git을 이용하기 위해 별도의 버전관리 툴을 사용할 필요없이, 안드로이드 스튜디오 내에서 아래의 단축키로 Git의 Remote Repository에 commit, push, .. 의 작업을 할 수 있다.
 
-commit : `Ctrl + K`
-push : `Ctrl + Shift + K`
+- commit : `Ctrl + K`
+- push : `Ctrl + Shift + K`
 
 <br><br>
 
