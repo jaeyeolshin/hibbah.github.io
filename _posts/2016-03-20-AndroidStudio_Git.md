@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 안드로이드 스튜디오 + Git 연동
+title: 안드로이드 스튜디오 & Git 연동
 comments: true
 ---
 
