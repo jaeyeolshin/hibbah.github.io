@@ -60,7 +60,7 @@ if(str1 == str2) // false
 ## 3. ==연산자, 객체, 참조변수에 대한 이해
 
 결론부터 얘기하면 Java에서 String객체의 비교는 .equals() 메서드를 이용해야한다. 직전의 코드를 '두 개의 String객체 값을 비교'하는 의도대로 작성한 올바른 코드는 아래와 같다.
-
+ 
 ```java
 // Java
 if(str1.equals(str2)) // true
@@ -68,7 +68,7 @@ if(str1.equals(str2)) // true
 ```
 
 C++에서는 string 객체에 대해 비교연산자(==)를 사용하면 string class 내부적으로 정의된 operator overloading의 동작을 수행하게 된다.
-
+  
 ```cpp
 // C++
 class string{
