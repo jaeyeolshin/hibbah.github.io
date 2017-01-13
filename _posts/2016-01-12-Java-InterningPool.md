@@ -60,6 +60,7 @@ if(str1 == str2) // false
 ## 3. ==연산자, 객체, 참조변수에 대한 이해
 
 결론부터 얘기하면 Java에서 String객체의 비교는 .equals() 메서드를 이용해야한다. 직전의 코드를 '두 개의 String객체 값을 비교'하는 의도대로 작성한 올바른 코드는 아래와 같다.
+
 ```java
 // Java
 if(str1.equals(str2)) // true
@@ -67,6 +68,7 @@ if(str1.equals(str2)) // true
 ```
 
 C++에서는 string 객체에 대해 비교연산자(==)를 사용하면 string class 내부적으로 정의된 operator overloading의 동작을 수행하게 된다.
+
 ```cpp
 // C++
 class string{
@@ -109,6 +111,7 @@ String str2 = new String("abc");
 if(str1 == str2) // false
   System.out.println("Same"); // skip
 ```
+
 비록 같은 값("abc")을 가지긴 했지만 new 연산자를 통해 String객체를 각각 별도로 생성했으므로 str1과 str2는 서로 다른 참조값을 가지게 되므로, 참조변수를 비교하는 코드 **str1 == str2**는 false를 반환하게 된다. 위의 코드를 메모리 구조 관점에서 간단하게 살펴본 그림은 아래와 같다.
 
 ![memory1]({{ site.url }}/img/java_String1.JPG)
@@ -142,6 +145,7 @@ String[] str = new String[X];
 for(int i=0; i<X; ++i)
   str[i] = "abc";
 ```
+
 X개의 String객체를 생성하는데 모두 동일한 값("abc")를 갖도록 한다. 여기서 만약 X가 굉장히 크다면 동일한 값을 가지는 객체 X개를 모두 별도로 생성하게 되므로 메모리 낭비가 커진다.
 
 위와 같은 메모리 낭비를 줄이고자 등장한 기법(?)이 Interning이며, 리터럴값의 할당을 통해 객체를 생성할때는 무작정 객체를 생성하는 것이 아니라 **Interning Pool**이라는 메모리 영역을 참조하여 동일한 값의 객체가 이미 메모리에 존재하는지 확인하는 과정을 거친다.
